@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${name}">商品詳細</title>
+    <style>
+        body {
+            font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+            background-color: #f8f1e9;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .product-card {
+            display: flex;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        .product-image {
+            width: 280px;
+            height: auto;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            display: block;
+            background: #eee;
+            flex-shrink: 0;
+        }
+        .product-info {
+            padding: 32px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 0 0 24px 0;
+            line-height: 1.35;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            width: 110px;
+            padding: 10px 0;
+            color: #777;
+            font-weight: 500;
+            font-size: 0.92rem;
+        }
+        td {
+            padding: 10px 0;
+            font-size: 1.05rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 28px;
+            color: #5c4a3d;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="product-card">
+            <img class="product-image" 
+                 th:src="@{'/' + ${image}}" 
+                 th:alt="${name}">
+
+            <div class="product-info">
+                <h1 th:text="${name}">商品名</h1>
+
+                <table>
+                    <tr>
+                        <th>商品番号</th>
+                        <td th:text="${article}">-</td>
+                    </tr>
+                    <tr>
+                        <th>メーカー</th>
+                        <td th:text="${manufacturer}">-</td>
+                    </tr>
+                    <tr>
+                        <th>素材</th>
+                        <td th:text="${material}">-</td>
+                    </tr>
+                    <tr>
+                        <th>サイズ</th>
+                        <td th:text="${size}">-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <a class="back-link" th:href="@{/}">← トップへ戻る</a>
+    </div>
+
+</body>
+</html>
